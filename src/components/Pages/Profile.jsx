@@ -1,4 +1,3 @@
-
 import React, { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 
@@ -37,7 +36,6 @@ const Profile = () => {
         displayName: formData.name,
         photoURL: formData.photo,
       });
-
       setMessage("Profile updated successfully!");
       setEditMode(false);
     } catch (error) {
@@ -63,34 +61,43 @@ const Profile = () => {
   }
 
   return (
-    <div className="max-w-lg mx-auto mt-28 mb-10 p-5 bg-amber-100 dark:bg-gray-700 shadow-lg rounded-xl text-gray-800 dark:text-gray-200">
-      <h2 className="text-3xl font-bold text-center mb-5">User Profile</h2>
+    <div className="max-w-lg mx-auto mt-28 mb-12 p-6 rounded-3xl shadow-2xl 
+      bg-linear-to-br from-amber-200 to-amber-400 dark:from-gray-800 dark:to-gray-700
+      border border-amber-400 dark:border-gray-600 transition-colors duration-500">
 
-      <div className="flex flex-col items-center gap-3 mb-5">
-        <img
-          src={formData.photo || "https://via.placeholder.com/150"}
-          alt={formData.name || "User"}
-          className="w-32 h-32 rounded-full border border-amber-700"
-        />
-        <h3 className="text-xl font-semibold">{formData.name}</h3>
+      <h2 className="text-4xl font-extrabold text-center mb-6 text-gray-900 dark:text-white">
+        User Profile
+      </h2>
+
+      <div className="flex flex-col items-center gap-4 mb-6">
+        <div className="relative">
+          <img
+            src={formData.photo || "https://via.placeholder.com/150"}
+            alt={formData.name || "User"}
+            className="w-32 h-32 rounded-full border-4 border-white dark:border-gray-600 shadow-lg"
+          />
+        </div>
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white">{formData.name}</h3>
         <p className="text-gray-700 dark:text-gray-300">{formData.email}</p>
         <button
-          className="btn btn-sm mt-3 bg-amber-500 dark:bg-gray-600 text-white"
           onClick={() => setEditMode(!editMode)}
+          className="px-6 py-2 mt-2 font-semibold rounded-full
+            bg-linear-to-r from-amber-400 to-amber-600 dark:from-gray-600 dark:to-gray-700
+            text-white dark:text-amber-300 shadow-md hover:scale-105 transition-transform duration-300"
         >
           {editMode ? "Cancel" : "Update Profile"}
         </button>
       </div>
 
       {editMode && (
-        <form onSubmit={handleUpdate} className="flex flex-col gap-3">
+        <form onSubmit={handleUpdate} className="flex flex-col gap-4">
           <input
             type="text"
             name="name"
             placeholder="Name"
             value={formData.name}
             onChange={handleChange}
-            className="input rounded-xl bg-gray-500 dark:bg-gray-600 text-white"
+            className="input rounded-2xl px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-inner border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-400 transition"
             required
           />
           <input
@@ -99,7 +106,7 @@ const Profile = () => {
             placeholder="Email (read-only)"
             value={formData.email}
             disabled
-            className="input rounded-xl bg-gray-500 dark:bg-gray-600 text-white"
+            className="input rounded-2xl px-4 py-2 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 shadow-inner border border-gray-300 dark:border-gray-600 cursor-not-allowed"
           />
           <input
             type="text"
@@ -107,7 +114,7 @@ const Profile = () => {
             placeholder="Photo URL"
             value={formData.photo}
             onChange={handleChange}
-            className="input rounded-xl bg-gray-500 dark:bg-gray-600 text-white"
+            className="input rounded-2xl px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-inner border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-400 transition"
           />
           <input
             type="password"
@@ -115,14 +122,24 @@ const Profile = () => {
             placeholder="New Password (optional)"
             value={formData.password}
             onChange={handleChange}
-            className="input rounded-xl bg-gray-500 dark:bg-gray-600 text-white"
+            className="input rounded-2xl px-4 py-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-inner border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-400 transition"
           />
-          <button type="submit" className="btn btn-neutral rounded-3xl mt-2">
+          <button
+            type="submit"
+            className="px-6 py-2 mt-2 font-bold rounded-full
+              bg-linear-to-r from-amber-500 to-amber-700 dark:from-gray-600 dark:to-gray-700
+              text-white dark:text-amber-300 shadow-lg hover:scale-105 transition-transform duration-300"
+          >
             Save Changes
           </button>
         </form>
       )}
-      {message && <p className="mt-3 text-green-500 text-center">{message}</p>}
+
+      {message && (
+        <p className="mt-4 text-center font-semibold text-green-600 dark:text-green-400">
+          {message}
+        </p>
+      )}
     </div>
   );
 };

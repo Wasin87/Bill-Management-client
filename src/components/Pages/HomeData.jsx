@@ -11,7 +11,7 @@ const HomeData = ({ billPromise }) => {
         <h1>Recent Bills</h1>
       </div>
 
-      <div className="flex justify-center items-center text-gray-500 mt-3">
+      <div className="flex justify-center items-center text-gray-600 dark:text-gray-300 mt-3">
         <p>Check out the latest utility bills reported in your area</p>
       </div>
 
@@ -40,7 +40,7 @@ const HomeData = ({ billPromise }) => {
               <p className="text-sm text-gray-500 mt-1 line-clamp-2 dark:text-gray-50">{description}</p>
 
               <div className="flex justify-between items-center mt-3">
-                <p className="text-gray-700 font-semibold text-sm dark:text-gray-50">Amount: ${amount}</p>
+                <p className="text-gray-700 font-semibold text-sm dark:text-gray-50">Amount: ৳{amount}</p>
                 <p className="text-gray-500 text-xs dark:text-gray-50">{date}</p>
               </div>
             </div>

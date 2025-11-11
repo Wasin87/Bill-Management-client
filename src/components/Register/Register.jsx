@@ -84,7 +84,7 @@ const Register = () => {
   };
 
   return (
-    <div className="card mx-auto w-full max-w-sm shadow-2xl mt-25 mb-10 text-black bg-amber-100 dark:bg-gray-700 dark:text-white">
+    <div className="card mx-auto w-full max-w-sm shadow-2xl mt-25 mb-10 text-black bg-linear-to-b from-amber-400 to-amber-200 dark:from-gray-800 dark:to-amber-800 dark:text-white">
       <h1 className="text-3xl font-bold text-center mt-5">Register now!</h1>
       <form onSubmit={handleRegister} className="card-body">
         <fieldset className="fieldset">
@@ -109,7 +109,7 @@ const Register = () => {
 
           {formError && <p className="text-xs text-error mt-2">{formError}</p>}
 
-          <button type="submit" className="btn btn-neutral mt-4 rounded-3xl">Register</button>
+          <button type="submit" className="btn btn-neutral mt-4 rounded-3xl border border-amber-50 bg-linear-to-b from-amber-600 to-amber-400 text-black dark:text-white">Register</button>
           <p className="font-semibold m-auto pt-5">
             Already Have An Account? <Link className="text-blue-600" to="/login">Login</Link>
           </p>

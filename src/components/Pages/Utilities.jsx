@@ -3,6 +3,7 @@ import electricity from '../../assets/Electry.png';
 import gas from '../../assets/gas.png';
 import internet from '../../assets/internet.png';
 import water from '../../assets/water.png';
+import { Link } from 'react-router';
 
 const Utilities = () => {
   const utilities = [
@@ -32,9 +33,12 @@ const Utilities = () => {
             <p className="font-semibold text-lg text-gray-800 mb-3 dark:text-gray-50">
               {utility.name}
             </p>
-            <button className="w-full bg-amber-500 hover:bg-amber-600 text-white font-medium py-2 rounded-lg transition-colors duration-200">
+            <Link to="/allBills">
+            <button className="w-40 bg-amber-500 hover:bg-amber-600 text-white font-medium py-2 rounded-lg transition-colors duration-200">
               View Bills
             </button>
+            </Link>
+
           </div>
         ))}
       </div>

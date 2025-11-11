@@ -51,7 +51,7 @@ const Login = () => {
   };
 
   return (
-    <div className="card mx-auto w-full max-w-sm shadow-2xl mt-25 mb-10 text-black bg-amber-100 dark:bg-gray-700 dark:text-white">
+    <div className="card mx-auto w-full max-w-sm shadow-2xl mt-25 mb-10 text-black bg-linear-to-b from-amber-400 to-amber-200 dark:from-gray-800 dark:to-amber-800 dark:text-white">
       <h1 className="text-3xl font-bold text-center mt-5">Login now!</h1>
       <form onSubmit={handleLogin} className="card-body">
         <fieldset className="fieldset">
@@ -63,7 +63,7 @@ const Login = () => {
 
           {error && <p className="text-red-500 text-xs">{error}</p>}
 
-          <button type="submit" className="btn btn-neutral mt-4 rounded-3xl">Login</button>
+          <button type="submit" className="btn btn-neutral mt-4 border border-amber-50 rounded-3xl bg-linear-to-b from-amber-600 to-amber-400 text-black dark:text-white">Login</button>
           <p className="font-semibold m-auto pt-5">
             Don't Have An Account? <Link className="text-blue-600" to="/register">Register</Link>
           </p>
