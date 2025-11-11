@@ -1,9 +1,9 @@
-import React, { use } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-import { AuthContext } from '../../Context/AuthContext';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React, { use } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/AuthContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const HomeData = ({ billPromise }) => {
   const billData = use(billPromise);
@@ -13,11 +13,10 @@ const HomeData = ({ billPromise }) => {
   const handlePayBill = (bill) => {
     if (!user) {
       toast.warn("Please login to pay the bill!", { position: "top-center" });
-      navigate("/login", { state: { fromBill: bill } }); // store bill info to pay later
+      navigate("/login", { state: { fromBill: bill } });
       return;
     }
 
-    // ✅ show confirm popup
     if (window.confirm("Are you sure you want to pay this bill?")) {
       const payData = {
         title: bill.title,
@@ -36,12 +35,19 @@ const HomeData = ({ billPromise }) => {
       })
         .then((res) => res.json())
         .then(() =>
-          toast.success("✅ Bill Paid Successfully!", {
-            position: "top-center",
-          })
+          toast.success("✅ Bill Paid Successfully!", { position: "top-center" })
         )
         .catch((err) => console.error("Error saving bill:", err));
     }
+  };
+
+  const handleSeeDetails = (bill) => {
+    if (!user) {
+      toast.warn("Please login to see details!", { position: "top-center" });
+      navigate("/login", { state: { fromBillDetails: bill } });
+      return;
+    }
+    navigate("/details", { state: { bill } });
   };
 
   return (
@@ -68,31 +74,26 @@ const HomeData = ({ billPromise }) => {
               />
 
               <div className="flex items-center justify-between mt-3">
-                <p className="font-bold text-lg dark:text-gray-50">
-                  {bill.title}
-                </p>
+                <p className="font-bold text-lg dark:text-gray-50">{bill.title}</p>
                 <span className="text-xs bg-amber-300 text-amber-800 px-2 py-1 rounded-full">
                   {bill.category}
                 </span>
               </div>
 
-                 
- 
-
               <div className="flex justify-between items-center mt-3">
                 <p className="text-gray-700 font-semibold text-sm dark:text-gray-50">
                   Amount: ৳{bill.amount}
                 </p>
-                <p className="text-gray-500 text-xs dark:text-gray-50">
-                  {bill.date}
-                </p>
+                <p className="text-gray-500 text-xs dark:text-gray-50">{bill.date}</p>
               </div>
             </div>
 
-            {/* See details */}
-                <a className="flex justify-between items-center text-amber-800 dark:text-amber-200 hover:text-amber-600 hover:underline transition-colors duration-300 m-auto">
-                   See details
-                </a>
+            <button
+              onClick={() => handleSeeDetails(bill)}
+              className="flex justify-center text-amber-800 dark:text-amber-200 hover:text-amber-600 hover:underline transition-colors duration-300 mt-3"
+            >
+              See details
+            </button>
 
             <div className="flex justify-center mt-4">
               <button

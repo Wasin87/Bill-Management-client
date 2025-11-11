@@ -13,6 +13,7 @@ import AllBills from './components/All Bills/AllBills.jsx';
 import MyPayBill from './components/MYPayBill/MyPayBill.jsx';
 import Login from './components/Pages/Login.jsx';
 import Profile from './components/Pages/Profile.jsx';
+import Details from './components/Pages/Details.jsx';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: '/profile',
         Component: Profile
+      },
+      {
+        path: '/details',
+        Component: Details
       }
     ]
   }
