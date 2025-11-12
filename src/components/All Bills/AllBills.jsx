@@ -37,7 +37,7 @@ const AllBills = () => {
   // All bills
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:3000/bills")
+    fetch("https://bill-management-db-api.vercel.app/bills")
       .then((res) => res.json())
       .then((data) => {
         setBillsData(data);

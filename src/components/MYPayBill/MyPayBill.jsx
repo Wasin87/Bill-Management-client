@@ -9,7 +9,7 @@ const MyPayBills = () => {
   const [selectedBill, setSelectedBill] = useState(null);  
 
   useEffect(() => {
-    fetch("http://localhost:3000/payBill")
+    fetch("https://bill-management-db-api.vercel.app/payBill")
       .then((res) => res.json())
       .then((data) => setMyBills(data))
       .catch((err) => console.error("Error loading pay bills:", err));
@@ -59,7 +59,7 @@ const MyPayBills = () => {
   // Handle Delete
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this bill payment record?")) {
-      fetch(`http://localhost:3000/payBill/${id}`, {
+      fetch(`https://bill-management-db-api.vercel.app/payBill/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -103,7 +103,7 @@ const MyPayBills = () => {
         {myBills.map((bill) => (
           <div
             key={bill._id}
-            className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+            className="bg-amber-50 dark:bg-gray-800 border border-gray-700 dark:border-amber-200 rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
           >
             {/* Header Section */}
             <div className="flex justify-between items-start mb-4">

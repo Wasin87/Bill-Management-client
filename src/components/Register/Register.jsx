@@ -46,7 +46,7 @@ const Register = () => {
         image: user.photoURL,
       };
 
-      await fetch("http://localhost:3000/users", {
+      await fetch("https://bill-management-db-api.vercel.app/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newUser),
@@ -71,7 +71,7 @@ const Register = () => {
         image: user.photoURL,
       };
 
-      await fetch("http://localhost:3000/users", {
+      await fetch("https://bill-management-db-api.vercel.app/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newUser),
