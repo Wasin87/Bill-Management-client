@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import jsPDF from "jspdf";
 import { FaTrashAlt } from "react-icons/fa";
+import logo from "../../assets/logo.png";
 
 const MyPayBills = () => {
   const [myBills, setMyBills] = useState([]);
-  const [selectedBill, setSelectedBill] = useState(null); // ✅ For dynamic modal
+  const [selectedBill, setSelectedBill] = useState(null);  
 
   useEffect(() => {
     fetch("http://localhost:3000/payBill")
@@ -15,19 +16,40 @@ const MyPayBills = () => {
 
   const totalPaid = myBills.reduce((sum, bill) => sum + Number(bill.amount), 0);
 
-  // ✅ Download PDF
+   
   const handleDownloadPDF = (bill) => {
     const doc = new jsPDF();
-    doc.text("Bill Payment Report", 80, 10);
-    doc.text(`Title: ${bill.title}`, 20, 30);
-    doc.text(`Category: ${bill.category}`, 20, 40);
-    doc.text(`Amount: Tk ${bill.amount}`, 20, 50);
-    doc.text(`Location: ${bill.location}`, 20, 60);
-    doc.text(`Date: ${bill.date}`, 20, 70);
-    doc.save(`${bill.title}_Report.pdf`);
+
+  
+    const img = new Image();
+    img.src = logo;
+    img.onload = function () {
+      const imgWidth = 30;  
+      const imgHeight = (this.height / this.width) * imgWidth;  
+      const pageWidth = doc.internal.pageSize.getWidth();
+      doc.addImage(img, "PNG", (pageWidth - imgWidth) / 2, 10, imgWidth, imgHeight);
+
+      // Title
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(18);
+      doc.text("Bill Payment Report", pageWidth / 2, 45, { align: "center" });
+
+      // Bill Details
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(12);
+      let startY = 60;
+      doc.text(`Title: ${bill.title}`, 20, startY);
+      doc.text(`Category: ${bill.category}`, 20, startY + 10);
+      doc.text(`Amount: Tk ${bill.amount}`, 20, startY + 20);
+      doc.text(`Location: ${bill.location}`, 20, startY + 30);
+      doc.text(`Date: ${bill.date}`, 20, startY + 40);
+
+       
+      doc.save(`${bill.title}_Report.pdf`);
+    };
   };
 
-  // ✅ Delete Bill
+   
   const handleDelete = (id) => {
     fetch(`http://localhost:3000/payBill/${id}`, {
       method: "DELETE",
@@ -41,7 +63,7 @@ const MyPayBills = () => {
 
   return (
     <div className="max-w-6xl mx-auto mt-24 mb-12 px-6">
-      {/* Total Amount */}
+       
       <div className="w-full flex flex-col justify-center items-center px-6 py-5 bg-linear-to-r from-amber-300 to-amber-100 dark:from-gray-700 dark:to-gray-800 border border-amber-700 rounded-2xl shadow-md mb-10">
         <p className="font-bold text-2xl text-gray-800 dark:text-white">
           Total Amount Paid
@@ -51,7 +73,7 @@ const MyPayBills = () => {
         </p>
       </div>
 
-      {/* Heading */}
+     
       <div className="text-center mb-8">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
           Pay Bill Details
@@ -61,7 +83,7 @@ const MyPayBills = () => {
         </p>
       </div>
 
-      {/* Report Cards */}
+       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {myBills.map((bill) => (
           <div
@@ -74,7 +96,7 @@ const MyPayBills = () => {
                   {bill.title}
                 </h2>
 
-                {/* Category + Date */}
+                 
                 <div className="flex items-center gap-2 mt-1">
                   <span className="text-xs font-medium bg-amber-300 text-amber-900 px-3 py-1 rounded-full">
                     {bill.category}
@@ -92,53 +114,52 @@ const MyPayBills = () => {
                 Tk {bill.amount}
               </p>
             </div>
-            
-             <div className="flex justify-around">
-                           {/* See Bill Report Button */}
-            <div className="flex justify-center mt-5">
-              <button
-                onClick={() => setSelectedBill(bill)} // ✅ Set selected bill
-                className="btn btn-sm bg-amber-700 hover:bg-amber-600 text-white shadow-md transition-all duration-200"
-              >
-                See bill report
-              </button>
-            </div>
 
-            {/* Action Buttons */}
-            <div className="flex justify-end gap-3 mt-5">
-              <button
-                onClick={() => handleDownloadPDF(bill)}
-                className="btn btn-sm bg-amber-500 hover:bg-amber-600 text-white shadow-md transition-all duration-200"
-              >
-                Download report
-              </button>
-              <button
-                onClick={() => handleDelete(bill._id)}
-                className="btn btn-sm bg-red-500 hover:bg-red-600 text-white flex items-center gap-1 shadow-md transition-all duration-200"
-              >
-                <FaTrashAlt /> Delete
-              </button>
+            <div className="flex justify-around">
+              
+              <div className="flex justify-center mt-5">
+                <button
+                  onClick={() => setSelectedBill(bill)}  
+                  className="btn btn-sm bg-amber-700 hover:bg-amber-600 text-white shadow-md transition-all duration-200"
+                >
+                  See bill report
+                </button>
+              </div>
+
+               
+              <div className="flex justify-end gap-3 mt-5">
+                <button
+                  onClick={() => handleDownloadPDF(bill)}
+                  className="btn btn-sm bg-amber-500 hover:bg-amber-600 text-white shadow-md transition-all duration-200"
+                >
+                  Download report
+                </button>
+                <button
+                  onClick={() => handleDelete(bill._id)}
+                  className="btn btn-sm bg-red-500 hover:bg-red-600 text-white flex items-center gap-1 shadow-md transition-all duration-200"
+                >
+                  <FaTrashAlt /> Delete
+                </button>
+              </div>
             </div>
-             </div>
- 
           </div>
         ))}
       </div>
 
-      {/* Empty State */}
+      
       {myBills.length === 0 && (
         <p className="text-center text-gray-500 dark:text-gray-400 mt-10 text-lg">
           No bills found. Please pay a bill to view it here.
         </p>
       )}
 
-      {/* ✅ Modal (Dynamic) */}
+    
       {selectedBill && (
         <div className="modal modal-open">
-          <div className="modal-box relative">
+          <div className="modal-box relative border dark:border-amber-100 border-b-amber-950 bg-amber-50 dark:bg-gray-900">
             <button
               onClick={() => setSelectedBill(null)}
-              className="btn btn-sm btn-circle absolute right-2 top-2"
+              className="btn btn-sm btn-circle absolute right-2 top-2 dark:bg-gray-600 bg-amber-200"
             >
               ✕
             </button>

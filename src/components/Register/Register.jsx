@@ -18,22 +18,20 @@ const Register = () => {
     const password = form.password.value;
 
     setFormError("");
-
-    // ✅ Name must start with uppercase
+ 
     if (!/^[A-Z][a-zA-Z\s]*$/.test(name))
       return setFormError("Name must start with an uppercase letter.");
 
-    // ✅ Photo URL validation
+     
     if (!photo.startsWith("http"))
       return setFormError("Enter a valid photo URL.");
-
-    // ✅ Email validation: must be valid format AND first letter lowercase
+ 
     if (!/^[a-z][\w.-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email))
       return setFormError(
         "Email must be valid and start with a lowercase letter."
       );
 
-    // ✅ Password validation
+    
     if (password.length < 6)
       return setFormError("Password must be at least 6 characters.");
 

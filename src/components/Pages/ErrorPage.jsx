@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Error from '../../assets/ErrorP.png';
 const ErrorPage = () => {
   return (
-    <div className="flex flex-col justify-center items-center h-screen bg-linear-to-br from-amber-100 to-amber-200 dark:from-gray-950 dark:to-gray-900 text-gray-900 dark:text-gray-100 px-6 py-5">
+    <div className="flex flex-col justify-center items-center h-screen bg-linear-to-br from-amber-100 to-amber-2 00 dark:from-gray-950 dark:to-gray-900 text-gray-900 dark:text-gray-100 px-6 py-5">
      <img className='w-[600px] h-[580px]' src={Error} alt="" />
       <Link
         to="/"

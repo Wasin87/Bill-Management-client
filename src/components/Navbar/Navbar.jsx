@@ -3,7 +3,7 @@ import { NavLink, Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthContext";
 import logo from "../../assets/logo.png";
 import { FaMoon, FaSun, FaBars } from "react-icons/fa";
-import Swal from "sweetalert2"; // ✅ SweetAlert import
+import Swal from "sweetalert2";  
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
@@ -19,7 +19,7 @@ const Navbar = () => {
 
   const handleThemeToggle = () => setTheme(prev => (prev === "winter" ? "night" : "winter"));
 
-  // ✅ SweetAlert Sign Out
+ 
   const handleSignOut = () => {
     Swal.fire({
       title: 'Are you sure?',
@@ -74,7 +74,7 @@ const Navbar = () => {
   return (
     <nav className="bg-linear-to-r from-amber-400 to-amber-200 dark:from-gray-700 dark:to-amber-900 shadow-md fixed w-full top-0 left-0 z-50 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-        {/* Logo + Theme + Hamburger (mobile) */}
+         
         <div className="flex items-center gap-3">
           <Link to="/" className="flex items-center gap-2">
             <img
@@ -94,7 +94,7 @@ const Navbar = () => {
             {theme === "night" ? <FaSun className="text-yellow-400" /> : <FaMoon className="text-gray-700" />}
           </button>
 
-          {/* Hamburger icon for mobile */}
+         
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="lg:hidden text-2xl p-2 rounded hover:bg-amber-200 dark:hover:bg-gray-600 transition"
@@ -103,10 +103,10 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Desktop Menu */}
+        
         <ul className="hidden lg:flex gap-6 items-center">{links}</ul>
 
-        {/* User / Login/Register buttons */}
+       
         <div className="flex items-center gap-3">
           {user ? (
             <>
@@ -121,7 +121,7 @@ const Navbar = () => {
                 </span>
               </Link>
               <button
-                onClick={handleSignOut} // ✅ SweetAlert applied
+                onClick={handleSignOut}  
                 className="btn btn-sm border border-amber-800 bg-amber-700 dark:bg-amber-600 text-white hover:bg-amber-700 transition"
               >
                 Sign Out
@@ -146,7 +146,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Dropdown Menu */}
+     
       {mobileMenuOpen && (
         <div className="lg:hidden bg-linear-to-r from-amber-300 to-amber-100 dark:from-gray-800 dark:to-gray-700 border-t border-amber-400 dark:border-gray-600 shadow-md px-6 py-4 transition-all duration-300">
           <ul className="flex flex-col gap-4">{links}</ul>

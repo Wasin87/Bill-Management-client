@@ -7,7 +7,7 @@ const Details = () => {
   const bill = location.state?.bill;
 
   if (!bill) {
-    // If no bill data, redirect to home
+    
     navigate("/", { replace: true });
     return null;
   }

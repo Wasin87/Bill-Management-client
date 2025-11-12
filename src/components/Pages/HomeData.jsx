@@ -10,8 +10,8 @@ const HomeData = ({ billPromise }) => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // ✅ If redirected back from login after clicking "See Details"
-  // and login is successful → go directly to details page
+  //redirected   
+ 
   useEffect(() => {
     const savedBill = sessionStorage.getItem("pendingBillDetails");
     if (user && savedBill) {
@@ -21,7 +21,7 @@ const HomeData = ({ billPromise }) => {
     }
   }, [user, navigate]);
 
-  // ✅ Pay Bill Handler
+  
   const handlePayBill = (bill) => {
     if (!user) {
       toast.warn("Please login to pay the bill!", { position: "top-center" });
@@ -53,20 +53,19 @@ const HomeData = ({ billPromise }) => {
     }
   };
 
-  // ✅ See Details Handler
+  
   const handleSeeDetails = (bill) => {
     if (!user) {
       toast.warn("Please login to see details!", { position: "top-center" });
 
-      // 🔹 Save the bill data temporarily so we can redirect back after login
+  
       sessionStorage.setItem("pendingBillDetails", JSON.stringify(bill));
 
-      // 🔹 Redirect to login page
+  
       navigate("/login");
       return;
     }
-
-    // ✅ If user already logged in → go directly to details page
+ 
     navigate("/details", { state: { bill } });
   };
 
@@ -112,7 +111,7 @@ const HomeData = ({ billPromise }) => {
               </div>
             </div>
 
-            {/* ✅ See Details Button */}
+            {/* See Details Button */}
             <button
               onClick={() => handleSeeDetails(bill)}
               className="flex justify-center text-amber-800 dark:text-amber-200 hover:text-amber-600 hover:underline transition-colors duration-300 mt-3"
@@ -120,7 +119,7 @@ const HomeData = ({ billPromise }) => {
               See details
             </button>
 
-            {/* ✅ Pay Bill Button */}
+            {/* Pay Bill Button */}
             <div className="flex justify-center mt-4">
               <button
                 onClick={() => handlePayBill(bill)}

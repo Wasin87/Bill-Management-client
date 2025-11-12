@@ -14,7 +14,7 @@ const AllBills = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // ✅ Load all bills
+  // all bills
   useEffect(() => {
     setLoading(true);
     fetch("http://localhost:3000/bills")
@@ -29,8 +29,8 @@ const AllBills = () => {
       });
   }, []);
 
-  // ✅ If redirected back from login and user logged in
-  // → go directly to details page with saved bill
+  //  redirected user logged in
+  
   useEffect(() => {
     const savedBill = sessionStorage.getItem("pendingBillDetails");
     if (user && savedBill) {
@@ -64,7 +64,7 @@ const AllBills = () => {
     setTimeout(() => setFiltering(false), 300);
   };
 
-  // ✅ Pay Bill Handler
+ 
   const handlePayBill = (bill) => {
     if (!user) {
       toast.warn("Please login to pay the bill!", { position: "top-center" });
@@ -96,20 +96,19 @@ const AllBills = () => {
     }
   };
 
-  // ✅ See Details Handler (Same as HomeData)
+ 
   const handleSeeDetails = (bill) => {
     if (!user) {
       toast.warn("Please login to see details!", { position: "top-center" });
 
-      // 🔹 Save bill temporarily so we can redirect after login
+  
       sessionStorage.setItem("pendingBillDetails", JSON.stringify(bill));
-
-      // 🔹 Redirect to login page
+ 
       navigate("/login");
       return;
     }
 
-    // ✅ If already logged in → go directly to details page
+  
     navigate("/details", { state: { bill } });
   };
 
@@ -122,7 +121,7 @@ const AllBills = () => {
         <p>Browse and manage all available utility bills</p>
       </div>
 
-      {/* Category + Search */}
+ 
       <div className="flex flex-col md:flex-row justify-between items-center mt-6 gap-4">
         <div className="flex gap-2 flex-wrap justify-center md:justify-start">
           {categories.map((cat) => (
@@ -151,7 +150,7 @@ const AllBills = () => {
         </div>
       </div>
 
-      {/* Loader */}
+ 
       {(loading || filtering) ? (
         <div className="flex justify-center items-center mt-10">
           <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-amber-500 border-b-4"></div>
@@ -189,7 +188,7 @@ const AllBills = () => {
                   </div>
                 </div>
 
-                {/* ✅ See Details Button (Updated) */}
+                
                 <button
                   onClick={() => handleSeeDetails(bill)}
                   className="flex justify-center text-amber-800 dark:text-amber-200 hover:text-amber-600 hover:underline transition-colors duration-300 mt-3"
@@ -197,7 +196,7 @@ const AllBills = () => {
                   See details
                 </button>
 
-                {/* ✅ Pay Bill Button */}
+                
                 <div className="flex justify-center mt-4">
                   <button
                     onClick={() => handlePayBill(bill)}

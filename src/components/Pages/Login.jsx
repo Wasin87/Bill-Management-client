@@ -11,7 +11,7 @@ const Login = () => {
   const [newPassword, setNewPassword] = useState("");
   const navigate = useNavigate();
 
-  // ✅ Handle Normal Login
+  // Login
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -40,7 +40,7 @@ const Login = () => {
       });
   };
 
-  // ✅ Handle Google Sign In
+  // Google Sign In
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((res) => {
@@ -69,14 +69,13 @@ const Login = () => {
       });
   };
 
-  // ✅ Toggle Forget Password Form
+  // Forget Password Form
   const handleForgetPassword = () => {
     setShowResetForm(!showResetForm);
     setResetEmail("");
     setNewPassword("");
   };
-
-  // ✅ Submit new password
+ 
   const handlePasswordResetSubmit = async (e) => {
     e.preventDefault();
 
@@ -90,10 +89,9 @@ const Login = () => {
     }
 
     try {
-      // 🔹 Try to reset password (via Firebase or custom API)
+ 
       const res = await resetPassword(resetEmail, newPassword);
-
-      // যদি Firebase এর custom ফাংশন হয়, তাহলে res null হতে পারে, তাই safe check:
+ 
       if (res?.status === 200 || res === true || res === undefined) {
         toast.success("✅ Password reset successfully!");
         setShowResetForm(false);
@@ -112,7 +110,8 @@ const Login = () => {
     <div className="card mx-auto w-full max-w-sm shadow-2xl mt-25 mb-10 text-black bg-linear-to-b from-amber-400 to-amber-200 dark:from-gray-800 dark:to-amber-800 dark:text-white">
       <h1 className="text-3xl font-bold text-center mt-5">Login now!</h1>
 
-      {/* ✅ Normal Login Form */}
+      {/* Login Form */}
+
       <form onSubmit={handleLogin} className="card-body">
         <fieldset className="fieldset">
           <label className="label text-black dark:text-white">Email</label>
@@ -161,7 +160,7 @@ const Login = () => {
         </fieldset>
       </form>
 
-      {/* ✅ Forget Password Form */}
+      {/* Password Form */}
       {showResetForm && (
         <div className="px-6 pb-6">
           <h3 className="text-lg font-semibold mb-3 text-center">Reset Password</h3>
@@ -190,7 +189,7 @@ const Login = () => {
         </div>
       )}
 
-      {/* ✅ Google Login */}
+      {/* Google Login */}
       <button
         onClick={handleGoogleSignIn}
         className="btn bg-white text-black border-[#e5e5e5] rounded-3xl w-[330px] flex items-center justify-center mb-5 m-auto "

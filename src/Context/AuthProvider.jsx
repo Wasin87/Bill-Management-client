@@ -42,15 +42,15 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  // ✅ New Reset Password (custom form-based)
+   
   const resetPassword = async (email, newPassword) => {
     try {
-      // 1️⃣ sign in temporarily
+     
       const userCredential = await signInWithEmailAndPassword(auth, email, newPassword);
       const user = userCredential.user;
-      // 2️⃣ update password
+      
       await updatePassword(user, newPassword);
-      // 3️⃣ sign out
+      
       await signOut(auth);
       return Promise.resolve("Password updated successfully");
     } catch (error) {
@@ -72,7 +72,7 @@ const AuthProvider = ({ children }) => {
     signInUser,
     signInWithGoogle,
     signOutUser,
-    resetPassword, // ✅ Added here
+    resetPassword,  
     user,
     loading,
   };
