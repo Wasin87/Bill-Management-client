@@ -102,7 +102,7 @@ Stores logged-in user payment records such as username, email, address, phone, d
 ## 👨‍💻 *Developer Information*
 
 *Project Name:* Bill Pie
-*Developer:* Rahed Uzzaman
+*Developer:* Md Wasin Ahmed
 *Tech Stack:* MERN (MongoDB, Express, React, Node)
 *Live Site:* [billpie.netlify.app](https://smart-deals-c7f0b.web.app)
 *Server URL:* [billpie-server.vercel.app](https://bill-management-db-api.vercel.app/)
