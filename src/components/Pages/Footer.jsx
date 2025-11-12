@@ -1,6 +1,7 @@
 import React from "react";
-import { FaFacebookF, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaFacebookF, FaYoutube } from "react-icons/fa";
 import logo from "../../assets/logo.png";
+import { BsTwitterX } from "react-icons/bs";
 
 const Footer = () => {
   return (
@@ -22,14 +23,14 @@ const Footer = () => {
               Bill Management System
             </p>
           </div>
-          
+
           {/* Social Icons */}
           <div className="flex gap-4 mt-2">
             <a href="#" className="hover:text-blue-600 transition">
               <FaFacebookF size={20} />
             </a>
             <a href="#" className="hover:text-blue-400 transition">
-              <FaTwitter size={20} />
+              <BsTwitterX size={20} />
             </a>
             <a href="#" className="hover:text-red-600 transition">
               <FaYoutube size={20} />
