@@ -14,6 +14,12 @@ It provides a *secure, responsive, and user-friendly* interface where all bill-r
 
 
 
+ঠিক আছে, তুমি চাইছো README-তে “লোকাল মেশিনে কিভাবে রান করবে” সেটার গাইডলাইন যোগ করতে। আমি তোমার টেক্সট ঠিক একই রাখব এবং নতুন সেকশন `📥 Install & Run Locally` যোগ করব। নিচে কোড-বেসড README টেমপ্লেট:
+
+ 
+ঠিক আছে! তুমি চাইছো এই README-তে **লোকাল মেশিনে রান করার নির্দেশনা** যোগ করতে। আমি তোমার সব লেখা **যথা যেমন আছে তেমন রেখে** লোকাল রান গাইডলাইন যুক্ত করে Markdown কোড তৈরি করেছি:
+
+ 
 ## 🌟 *Key Features*
 
 * 🔐 *Secure Authentication* with Email and Google Login
@@ -95,6 +101,56 @@ Stores logged-in user payment records such as username, email, address, phone, d
 
 ---
 
+## 💻 *Run Locally*
+
+### ✔ Step 1: Clone Repository
+
+```bash
+git clone https://github.com/Wasin87/Bill-Pie-Website.git
+cd Bill-Pie-Website
+````
+
+### ✔ Step 2: Install Dependencies
+
+```bash
+# For client
+cd client
+npm install
+
+# For server
+cd ../server
+npm install
+```
+
+### ✔ Step 3: Setup Environment Variables
+
+* Create a `.env` file in the server folder and add:
+
+```
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+FIREBASE_API_KEY=your_firebase_api_key
+FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+```
+
+* Replace with your own MongoDB & Firebase credentials.
+
+### ✔ Step 4: Run the App
+
+```bash
+# Start server
+cd server
+npm start
+
+# Start client (in another terminal)
+cd ../client
+npm start
+```
+
+* Open `http://localhost:3000` in your browser to see the app.
+
+---
+
 ## 🎯 *Additional Features*
 
 * PDF report generation for user payments
@@ -111,8 +167,13 @@ Stores logged-in user payment records such as username, email, address, phone, d
 
 *Project Name:* Bill Pie
 *Developer:* Md Wasin Ahmed
-*Tech Stack:* MERN (MongoDB, Express, React, Node)
-*Live Site:*  https://smart-deals-c7f0b.web.app
-*Server URL:*  https://bill-management-db-api.vercel.app/
+*Tech Stack:* MERN (MongoDB, Express, React, Node)<br>
+*Live Site:*  [https://smart-deals-c7f0b.web.app](https://smart-deals-c7f0b.web.app) <br>
+*Server URL:*  [https://bill-management-db-api.vercel.app/](https://bill-management-db-api.vercel.app/)
+
+```
 
  
+
+ 
+
