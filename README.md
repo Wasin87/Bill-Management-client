@@ -178,9 +178,3 @@ npm start
 *Live Site:*  [https://smart-deals-c7f0b.web.app](https://smart-deals-c7f0b.web.app) <br>
 *Server URL:*  [https://bill-management-db-api.vercel.app/](https://bill-management-db-api.vercel.app/)
 
-```
-
- 
-
- 
-
