@@ -80,6 +80,13 @@ Stores logged-in user payment records such as username, email, address, phone, d
 
 ---
 
+## 🗄️ **API Endpoints (Server-side)**
+
+* 📋 **GET /bills** → Get all bills  
+* 🧾 **GET /payBill** → Get user-specific paid bills  
+* ➕ **POST /payBill** → Add a new bill payment  
+* ✏️ **PATCH /payBill/:id** → Update an existing payment  
+* 🗑️ **DELETE /payBill/:id** → Delete a payment record
 ## ⚙ *Technology Stack*
 
 * *Frontend:* React.js, React Router, Tailwind CSS, Framer Motion, React Awesome Reveal
