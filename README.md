@@ -6,7 +6,12 @@ It provides a *secure, responsive, and user-friendly* interface where all bill-r
 
 ---
  
-<img width="1900" height="880" alt="image" src="https://github.com/user-attachments/assets/3a5346a0-0d35-4c51-b7de-6c87edee34ca" />
+<img width="500" height="600" alt="image" src="https://github.com/user-attachments/assets/3a5346a0-0d35-4c51-b7de-6c87edee34ca" />
+<img width="500" height="400" alt="image" src="https://github.com/user-attachments/assets/00880c6e-f051-4f3a-b553-fba5dfb15520" />
+<img width="500" height="600" alt="image" src="https://github.com/user-attachments/assets/b382b107-1011-4c0a-90ac-1fab5a300682" />
+<img width="500" height="480" alt="image" src="https://github.com/user-attachments/assets/0cc85ca2-576f-4d7c-9fa3-f5235251b04d" />
+
+
 
 
 ## 🌟 *Key Features*
